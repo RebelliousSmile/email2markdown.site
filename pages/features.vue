@@ -6,13 +6,13 @@
       <div class="text-center mb-16">
         <h1 class="text-3xl md:text-4xl font-extrabold mb-4 text-ink">Ce que fait email2markdown</h1>
         <p class="text-base max-w-lg mx-auto leading-relaxed text-ink-muted">
-          Chaque fonctionnalité est pensée pour que vous n'ayez plus à vous soucier de vos emails. Ils sont là, rangés, lisibles, chez vous.
+          Chaque fonctionnalité est pensée pour que vous gardiez le contrôle. Rien ne s'exécute sans votre accord — vos emails sont rangés, lisibles, chez vous.
         </p>
       </div>
 
       <div class="space-y-20">
 
-        <!-- ===== 1. Synchronisation ===== -->
+        <!-- ===== 1. Export à la demande ===== -->
         <div class="grid md:grid-cols-2 gap-8 items-center">
           <div>
             <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-action/8">
@@ -21,9 +21,9 @@
                 <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
               </svg>
             </div>
-            <h2 class="text-xl font-bold mb-3 text-ink">Synchronisation automatique</h2>
+            <h2 class="text-xl font-bold mb-3 text-ink">Export à la demande, pas en arrière-plan</h2>
             <p class="text-sm leading-relaxed mb-4 text-ink-muted">
-              Connectez vos comptes IMAP, l'application synchronise toute seule en arrière-plan. Nouveaux emails détectés ? Ils sont convertis et rangés sans que vous leviez le petit doigt.
+              Contrairement aux outils qui tournent en fond, email2markdown n'exporte que quand vous l'ordonnez : depuis le terminal ou d'un clic droit sur l'icône. Rien ne s'exécute sans votre accord.
             </p>
             <div class="rounded-xl p-4 space-y-2 bg-surface-alt border border-sep">
               <div v-for="a in syncAccounts" :key="a.n" class="flex items-center gap-3">
@@ -55,7 +55,7 @@
                 </div>
                 <div class="mx-2.5 border-t border-gray-300"></div>
                 <div class="py-1">
-                  <div v-for="item in ['Import Thunderbird', 'Ouvrir config', 'Documentation']" :key="item" class="px-4 py-1"><span class="text-12px text-gray-700">{{ item }}</span></div>
+                  <div v-for="item in ['Import Thunderbird', 'Paramètres…', 'Documentation']" :key="item" class="px-4 py-1"><span class="text-12px text-gray-700">{{ item }}</span></div>
                 </div>
                 <div class="mx-2.5 border-t border-gray-300"></div>
                 <div class="py-1"><div class="px-4 py-1"><span class="text-12px text-gray-700">Quitter</span></div></div>
@@ -139,7 +139,7 @@
             </div>
             <h2 class="text-xl font-bold mb-3 text-ink">Du HTML au Markdown, en propre</h2>
             <p class="text-sm leading-relaxed mb-4 text-ink-muted">
-              Fini le HTML illisible des emails. Chaque message est converti en Markdown propre et structuré : titres, listes, citations, liens — tout est préservé.
+              Fini le HTML illisible des emails. Chaque message est converti en Markdown propre avec un frontmatter YAML complet : expéditeur, destinataire, date, objet — et les pièces jointes rangées à côté.
             </p>
             <div class="space-y-2">
               <div v-for="t in conversionFeatures" :key="t" class="flex items-center gap-2.5">
@@ -219,12 +219,12 @@
                 <polyline points="18 15 21 18 18 21"/><line x1="21" y1="18" x2="21" y2="9"/>
               </svg>
             </div>
-            <h2 class="text-xl font-bold mb-3 text-ink">Triez par importance</h2>
+            <h2 class="text-xl font-bold mb-3 text-ink">Tri automatique : supprimer, résumer, garder</h2>
             <p class="text-sm leading-relaxed mb-4 text-ink-muted">
-              Tous les emails ne se valent pas. Attribuez un niveau d'importance pour retrouver en un coup d'œil ce qui compte vraiment, et laisser le bruit de côté.
+              La commande <code class="px-1 py-0.5 rounded text-xs text-source bg-source/8">sort</code> analyse vos emails exportés et génère un rapport <code class="px-1 py-0.5 rounded text-xs text-brand bg-brand/8">sort_report.json</code> avec trois catégories : emails à supprimer, à résumer, ou à conserver.
             </p>
             <p class="text-sm leading-relaxed text-ink-muted">
-              Trois étoiles pour les essentiels, zéro pour les newsletters — à vous de décider.
+              Basé sur l'expéditeur, les mots-clés, le type d'email et l'âge — avec listes blanche et noire configurables.
             </p>
           </div>
         </div>
@@ -274,15 +274,15 @@
               </div>
               <div class="p-4 font-mono text-11px leading-6 space-y-3">
                 <div>
-                  <p><span class="text-green-400">$</span> <span style="color:#e2e8f0">email2markdown sync</span></p>
-                  <p style="color:#64748b">⟳ Synchro pro… 47 nouveaux emails</p>
-                  <p style="color:#64748b">⟳ Synchro perso… 12 nouveaux emails</p>
-                  <p class="text-green-400">✓ 59 emails convertis en .md</p>
+                  <p><span class="text-green-400">$</span> <span style="color:#e2e8f0">email-to-markdown export --account Pro</span></p>
+                  <p style="color:#64748b">⟳ Connexion IMAP…</p>
+                  <p style="color:#64748b">⟳ Export en cours… 47 nouveaux emails</p>
+                  <p class="text-green-400">✓ 47 emails convertis en .md</p>
                 </div>
                 <div style="border-top:1px solid #3a3a4c" class="pt-3">
-                  <p><span class="text-green-400">$</span> <span style="color:#e2e8f0">email2markdown status</span></p>
-                  <p><span class="text-green-400">●</span> <span style="color:#cbd5e1">pro   </span> <span class="text-green-400">à jour</span> <span style="color:#475569"> · 2 847 fichiers</span></p>
-                  <p><span class="text-green-400">●</span> <span style="color:#cbd5e1">perso </span> <span class="text-green-400">à jour</span> <span style="color:#475569"> · 1 203 fichiers</span></p>
+                  <p><span class="text-green-400">$</span> <span style="color:#e2e8f0">email-to-markdown sort --account Pro</span></p>
+                  <p style="color:#64748b">⟳ Analyse des emails…</p>
+                  <p><span class="text-green-400">✓</span> <span style="color:#cbd5e1">sort_report.json généré</span> <span style="color:#475569">· 47 classés</span></p>
                 </div>
               </div>
             </div>
@@ -295,10 +295,10 @@
             </div>
             <h2 class="text-xl font-bold mb-3 text-ink">Ligne de commande incluse</h2>
             <p class="text-sm leading-relaxed mb-4 text-ink-muted">
-              Pour les utilisateurs avancés, chaque action est disponible en CLI. Sync, export, tri, configuration — tout se fait aussi depuis le terminal.
+              Pour les utilisateurs avancés, chaque action est disponible en CLI. Export, tri, import de comptes — tout se fait depuis le terminal avec les commandes <code class="px-1 py-0.5 rounded text-xs text-source bg-source/8">export</code>, <code class="px-1 py-0.5 rounded text-xs text-source bg-source/8">sort</code>, <code class="px-1 py-0.5 rounded text-xs text-source bg-source/8">import</code> de <code class="px-1 py-0.5 rounded text-xs text-source bg-source/8">email-to-markdown</code>.
             </p>
             <p class="text-sm leading-relaxed text-ink-muted">
-              Parfait pour automatiser avec cron, intégrer dans vos scripts, ou simplement pour ceux qui préfèrent le terminal.
+              Parfait pour intégrer dans vos scripts, ou simplement pour ceux qui préfèrent le terminal au tray.
             </p>
           </div>
         </div>
@@ -311,12 +311,12 @@
                 <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/>
               </svg>
             </div>
-            <h2 class="text-xl font-bold mb-3 text-ink">Import depuis Thunderbird</h2>
+            <h2 class="text-xl font-bold mb-3 text-ink">Configuration depuis Thunderbird</h2>
             <p class="text-sm leading-relaxed mb-4 text-ink-muted">
-              Vous avez des années d'emails dans Thunderbird ? Importez-les directement. L'outil lit les fichiers mbox et les convertit comme les autres.
+              Vous utilisez Thunderbird ? Une seule commande détecte automatiquement vos profils, extrait les paramètres IMAP et les mots de passe — sans rien saisir à la main.
             </p>
             <p class="text-sm leading-relaxed text-ink-muted">
-              Votre historique complet, dans le même format, au même endroit.
+              <code class="px-1.5 py-0.5 rounded font-mono text-xs text-source bg-source/8">email-to-markdown import --extract-passwords</code> — c'est tout.
             </p>
           </div>
           <div class="flex items-center justify-center">
@@ -401,10 +401,10 @@ const emailMeta = [
 ]
 
 const conversionFeatures = [
-  'Signatures email supprimées',
-  'Pixels de tracking nettoyés',
-  'Pièces jointes sauvegardées à côté',
-  'Tableaux convertis en Markdown',
+  'Images de signature filtrées',
+  'Frontmatter YAML avec métadonnées (from, to, date, subject)',
+  'Pièces jointes sauvegardées dans attachments/',
+  'Profondeur des citations configurable',
 ]
 
 const sortingDemo = [
@@ -423,8 +423,8 @@ const privacyPoints = [
 ]
 
 const thunderbirdImport = [
-  { f: 'Archives 2020–2024', n: '4 230 emails', done: true },
-  { f: 'Dossiers Thunderbird', n: '12 dossiers', done: true },
-  { f: 'Pièces jointes', n: '890 fichiers', done: false },
+  { f: 'Profil détecté', n: 'default-release', done: true },
+  { f: 'Comptes extraits', n: '3 comptes', done: true },
+  { f: 'Mots de passe', n: 'écrits dans .env', done: true },
 ]
 </script>

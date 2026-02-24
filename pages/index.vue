@@ -18,7 +18,7 @@
 
         <!-- Subtitle -->
         <p class="text-lg max-w-lg mx-auto mb-10 leading-relaxed text-ink-muted">
-          email2markdown se connecte à vos boîtes mail, sauvegarde chaque email en fichier texte, et range tout dans des dossiers. Simple, automatique, privé.
+          email2markdown se connecte à vos boîtes mail, convertit chaque email en fichier Markdown, et range tout dans des dossiers. Simple, local, privé.
         </p>
 
         <!-- CTAs -->
@@ -44,7 +44,7 @@
 
         <!-- CLI hint -->
         <p class="text-xs text-ink-dim">
-          ou : <code class="px-2 py-1 rounded font-mono text-source bg-source/8">cargo install email2markdown</code>
+          ou : <code class="px-2 py-1 rounded font-mono text-source bg-source/8">cargo build --release</code>
         </p>
       </div>
     </section>
@@ -71,7 +71,7 @@
               <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
             </svg>
           </div>
-          <span class="text-xs font-medium text-action">Synchro auto</span>
+          <span class="text-xs font-medium text-action">Export sur commande</span>
         </div>
 
         <svg width="32" height="2"><line x1="0" y1="1" x2="32" y2="1" stroke="#DDD9D4" stroke-width="2" stroke-dasharray="4 4"/></svg>
@@ -103,9 +103,9 @@
     <!-- ===== SYSTRAY ===== -->
     <section class="px-6 pb-16">
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-2xl font-bold mb-2 text-ink">Tourne en fond, sans déranger</h2>
+        <h2 class="text-2xl font-bold mb-2 text-ink">Accessible depuis la barre des tâches</h2>
         <p class="text-sm text-ink-muted max-w-md mx-auto mb-8">
-          L'application vit dans votre barre des tâches. Elle synchronise en arrière-plan, vous n'avez rien à faire.
+          L'icône vit dans votre barre système. Un clic droit suffit pour lancer un export — uniquement quand vous le décidez.
         </p>
 
         <!-- Systray mockup -->
@@ -131,7 +131,7 @@
               </div>
               <div class="mx-2.5 border-t border-gray-300"></div>
               <div class="py-1">
-                <div v-for="item in ['Import Thunderbird', 'Ouvrir config', 'Documentation']" :key="item" class="px-4 py-1">
+                <div v-for="item in ['Import Thunderbird', 'Paramètres…', 'Documentation']" :key="item" class="px-4 py-1">
                   <span class="text-12px text-gray-700">{{ item }}</span>
                 </div>
               </div>
@@ -145,7 +145,7 @@
 
         <div class="rounded-xl p-3 mt-4 max-w-xs mx-auto bg-surface-alt border border-sep">
           <p class="text-xs text-ink-muted">
-            <span class="text-brand">●</span> synchro OK · <span class="text-action">●</span> conversion · <span class="text-danger">●</span> erreur
+            <span class="text-brand">●</span> export OK · <span class="text-action">●</span> en cours · <span class="text-danger">●</span> erreur
           </p>
         </div>
       </div>
@@ -309,7 +309,7 @@
               <!-- Sync -->
               <div class="rounded-lg overflow-hidden bg-white border border-sep-light">
                 <div class="px-3 py-2 bg-surface-alt border-b border-sep-light">
-                  <span class="text-10px font-bold text-ink">Synchronisation</span>
+                  <span class="text-10px font-bold text-ink">Options d'export</span>
                 </div>
                 <div class="p-3 space-y-2.5">
                   <div v-for="s in syncSettings" :key="s.l" class="flex items-center justify-between">
@@ -351,7 +351,7 @@
             </svg>
           </div>
           <h3 class="font-semibold mb-1.5 text-ink">Simple</h3>
-          <p class="text-sm text-ink-muted">Installez, configurez, oubliez. L'app fait le reste.</p>
+          <p class="text-sm text-ink-muted">Installez, configurez, lancez. Une commande suffit.</p>
         </div>
 
         <div class="rounded-2xl p-6 shadow-sm bg-white border border-sep">
@@ -436,9 +436,9 @@ const emailAccounts = [
 ]
 
 const syncSettings = [
-  { l: 'Fréquence', v: '15 min', toggle: false },
   { l: 'Destination', v: '~/Emails/', toggle: false },
   { l: 'Pièces jointes', toggle: true, on: true },
-  { l: 'Sous-dossiers', toggle: true, on: true },
+  { l: 'Ignorer existants', toggle: true, on: true },
+  { l: 'Exclure signatures', toggle: true, on: true },
 ]
 </script>
