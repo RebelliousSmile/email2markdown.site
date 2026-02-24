@@ -1,390 +1,131 @@
 <template>
-  <div class="about-page">
-    <section class="page-header">
-      <div class="container">
-        <h1>À propos d'email2markdown</h1>
-        <p>Une solution simple pour convertir vos emails en Markdown</p>
+  <div>
+
+    <!-- Header -->
+    <section class="px-6 py-16 text-center bg-surface-alt border-b border-sep">
+      <div class="max-w-3xl mx-auto">
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-4 text-ink">À propos d'email2markdown</h1>
+        <p class="text-base text-ink-muted">Une solution simple pour archiver vos emails en Markdown</p>
       </div>
     </section>
 
-    <section class="about-content">
-      <div class="container">
-        <div class="about-section">
-          <h2>Qu'est-ce qu'email2markdown ?</h2>
-          <p>
-            email2markdown est une application web qui permet de convertir facilement le contenu HTML de vos emails
-            en format Markdown. Cette conversion facilite la lecture, l'archivage et la réutilisation du contenu
-            de vos emails dans différents contextes.
+    <!-- Content -->
+    <section class="px-6 py-16">
+      <div class="max-w-3xl mx-auto space-y-16">
+
+        <div>
+          <h2 class="text-2xl font-bold mb-6 text-ink">Qu'est-ce qu'email2markdown ?</h2>
+          <p class="text-base leading-relaxed text-ink-muted mb-4">
+            email2markdown est une application desktop qui se connecte à vos boîtes mail IMAP et convertit chaque email en fichier Markdown. Vos emails sont rangés dans des dossiers qui reflètent votre arborescence mail, nommés clairement avec la date.
           </p>
-          <p>
-            Le format Markdown est devenu un standard pour la rédaction de documentation, de notes et de contenu
-            structuré. En convertissant vos emails en Markdown, vous bénéficiez d'un format texte léger, portable
-            et facilement éditable.
+          <p class="text-base leading-relaxed text-ink-muted">
+            Le format Markdown est devenu un standard pour la rédaction de documentation et de notes. En convertissant vos emails en Markdown, vous obtenez des fichiers texte légers, portables, lisibles partout, pour toujours.
           </p>
         </div>
 
-        <div class="about-section">
-          <h2>Pourquoi email2markdown ?</h2>
-          <div class="reasons-grid">
-            <div class="reason-card">
-              <h3>📝 Simplicité</h3>
-              <p>
-                Une interface intuitive qui rend la conversion d'emails accessible à tous, sans compétences
-                techniques particulières requises.
-              </p>
-            </div>
-            <div class="reason-card">
-              <h3>🎯 Efficacité</h3>
-              <p>
-                Conversion rapide et précise qui préserve la structure et le formatage important de vos emails.
-              </p>
-            </div>
-            <div class="reason-card">
-              <h3>🔓 Open Source</h3>
-              <p>
-                Code source ouvert et transparent, permettant à la communauté de contribuer et d'auditer
-                le fonctionnement de l'application.
-              </p>
-            </div>
-            <div class="reason-card">
-              <h3>🛡️ Sécurité</h3>
-              <p>
-                Traitement local des emails dans votre navigateur, garantissant la confidentialité de vos données.
-              </p>
+        <div>
+          <h2 class="text-2xl font-bold mb-8 text-ink text-center">Pourquoi email2markdown ?</h2>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div v-for="r in reasons" :key="r.title" class="bg-white border border-sep rounded-2xl p-6 hover:-translate-y-1 transition-transform shadow-sm">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" :class="r.bg">
+                <span class="text-xl">{{ r.icon }}</span>
+              </div>
+              <h3 class="font-semibold mb-2 text-ink">{{ r.title }}</h3>
+              <p class="text-sm text-ink-muted leading-relaxed">{{ r.desc }}</p>
             </div>
           </div>
         </div>
 
-        <div class="about-section">
-          <h2>Comment ça marche ?</h2>
-          <div class="steps">
-            <div class="step">
-              <div class="step-number">1</div>
-              <div class="step-content">
-                <h3>Copiez votre email</h3>
-                <p>Sélectionnez et copiez le contenu de l'email que vous souhaitez convertir.</p>
+        <div>
+          <h2 class="text-2xl font-bold mb-8 text-ink text-center">Comment ça marche ?</h2>
+          <div class="space-y-6 max-w-2xl mx-auto">
+            <div v-for="(step, i) in steps" :key="i" class="flex gap-5">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 bg-brand text-white font-bold text-sm">
+                {{ i + 1 }}
               </div>
-            </div>
-            <div class="step">
-              <div class="step-number">2</div>
-              <div class="step-content">
-                <h3>Collez dans email2markdown</h3>
-                <p>Collez le contenu HTML de votre email dans l'application.</p>
-              </div>
-            </div>
-            <div class="step">
-              <div class="step-number">3</div>
-              <div class="step-content">
-                <h3>Obtenez le Markdown</h3>
-                <p>La conversion est instantanée. Copiez ou exportez le résultat en Markdown.</p>
+              <div>
+                <h3 class="font-semibold mb-1 text-ink">{{ step.title }}</h3>
+                <p class="text-sm text-ink-muted leading-relaxed">{{ step.desc }}</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="about-section">
-          <h2>Technologies utilisées</h2>
-          <div class="tech-stack">
-            <div class="tech-item">
-              <span class="tech-icon">⚡</span>
-              <span class="tech-name">Nuxt 3</span>
-            </div>
-            <div class="tech-item">
-              <span class="tech-icon">💚</span>
-              <span class="tech-name">Vue 3</span>
-            </div>
-            <div class="tech-item">
-              <span class="tech-icon">📝</span>
-              <span class="tech-name">Turndown</span>
-            </div>
-            <div class="tech-item">
-              <span class="tech-icon">🎨</span>
-              <span class="tech-name">CSS3</span>
+        <div>
+          <h2 class="text-2xl font-bold mb-8 text-ink text-center">Technologies</h2>
+          <div class="flex justify-center flex-wrap gap-4">
+            <div v-for="t in techStack" :key="t.name" class="flex flex-col items-center gap-2 px-6 py-4 bg-surface-alt rounded-xl border border-sep hover:scale-105 transition-transform min-w-28">
+              <span class="text-2xl">{{ t.icon }}</span>
+              <span class="font-semibold text-sm text-ink">{{ t.name }}</span>
             </div>
           </div>
         </div>
 
-        <div class="about-section">
-          <h2>Contact et Contribution</h2>
-          <p>
-            email2markdown est un projet open source. Nous accueillons avec plaisir les contributions,
-            les suggestions et les rapports de bugs de la communauté.
+        <div>
+          <h2 class="text-2xl font-bold mb-6 text-ink text-center">Contact & Contribution</h2>
+          <p class="text-base leading-relaxed text-ink-muted mb-8 text-center max-w-lg mx-auto">
+            email2markdown est un projet open source de <a href="https://www.scriptami.com" target="_blank" rel="noopener" class="text-brand hover:underline font-medium">scriptami</a>. Les contributions, suggestions et rapports de bugs sont les bienvenus.
           </p>
-          <div class="contact-links">
-            <a href="https://github.com" target="_blank" rel="noopener" class="contact-link">
-              <span class="link-icon">🐙</span>
-              <span>GitHub</span>
+          <div class="flex justify-center gap-4 flex-wrap">
+            <a href="https://github.com/RebelliousSmile/email2markdown.app" target="_blank" rel="noopener" class="flex items-center gap-2.5 px-6 py-3 rounded-xl bg-surface-alt border border-sep text-ink font-medium text-sm hover:bg-surface-hover transition-colors no-underline">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="text-ink-muted">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              GitHub
             </a>
-            <a href="mailto:contact@email2markdown.site" class="contact-link">
-              <span class="link-icon">📧</span>
-              <span>Email</span>
+            <a href="mailto:contact@scriptami.com" class="flex items-center gap-2.5 px-6 py-3 rounded-xl bg-surface-alt border border-sep text-ink font-medium text-sm hover:bg-surface-hover transition-colors no-underline">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ink-muted">
+                <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/>
+              </svg>
+              contact@scriptami.com
             </a>
           </div>
         </div>
+
       </div>
     </section>
 
-    <section class="cta-section">
-      <div class="container">
-        <div class="cta-content">
-          <h2>Commencez dès maintenant</h2>
-          <p>Découvrez la facilité de convertir vos emails en Markdown</p>
-          <NuxtLink to="/" class="btn btn-primary">Retour à l'accueil</NuxtLink>
+    <!-- CTA -->
+    <section class="bg-surface-alt border-t border-sep px-6 py-16">
+      <div class="max-w-xl mx-auto text-center">
+        <h2 class="text-2xl font-bold mb-3 text-ink">Prêt à commencer ?</h2>
+        <p class="text-sm text-ink-muted mb-8">Gratuit, open source, sans compte à créer.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <button class="flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold shadow-md hover:opacity-90 transition-opacity bg-action text-white">
+            Télécharger
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+          </button>
+          <NuxtLink to="/features" class="flex items-center gap-2 px-6 py-3.5 rounded-xl font-medium text-sm bg-white shadow-sm border border-sep hover:border-gray-400 transition-colors text-ink-muted no-underline">
+            Voir les fonctionnalités
+          </NuxtLink>
         </div>
       </div>
     </section>
+
   </div>
 </template>
 
-<style scoped>
-.about-page {
-  background: white;
-}
+<script setup>
+const reasons = [
+  { icon: '📝', title: 'Simplicité', desc: 'Installez, configurez une fois, oubliez. L\'application synchronise en arrière-plan.', bg: 'bg-brand/8' },
+  { icon: '🎯', title: 'Pérennité', desc: 'Des fichiers texte lisibles dans 20 ans, sans dépendance à un service tiers.', bg: 'bg-action/8' },
+  { icon: '🔓', title: 'Open Source', desc: 'Code source ouvert et auditable. Aucune boîte noire, aucune surprise.', bg: 'bg-source/8' },
+  { icon: '🛡️', title: 'Vie privée', desc: 'Rien ne quitte votre machine. Pas de cloud, pas de compte, pas de télémétrie.', bg: 'bg-result/8' },
+]
 
-.page-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 60px 0;
-  text-align: center;
-}
+const steps = [
+  { title: 'Installez l\'application', desc: 'Téléchargez le binaire pour votre système ou installez via cargo.' },
+  { title: 'Configurez vos comptes IMAP', desc: 'Ajoutez vos adresses email et paramètres de connexion dans l\'interface.' },
+  { title: 'La synchronisation démarre', desc: 'L\'application tourne en arrière-plan et convertit vos emails au fil de l\'eau.' },
+  { title: 'Profitez de vos archives', desc: 'Parcourez vos emails en Markdown depuis n\'importe quel éditeur de texte.' },
+]
 
-.page-header h1 {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 15px;
-}
-
-.page-header p {
-  font-size: 1.25rem;
-  opacity: 0.95;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.about-content {
-  padding: 80px 0;
-}
-
-.about-section {
-  margin-bottom: 80px;
-}
-
-.about-section h2 {
-  font-size: 2.5rem;
-  color: #1f2937;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.about-section p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #6b7280;
-  margin-bottom: 20px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.reasons-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
-}
-
-.reason-card {
-  background: #f9fafb;
-  padding: 30px;
-  border-radius: 12px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.reason-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.reason-card h3 {
-  font-size: 1.5rem;
-  color: #1f2937;
-  margin-bottom: 15px;
-}
-
-.reason-card p {
-  color: #6b7280;
-  line-height: 1.6;
-  margin: 0;
-}
-
-.steps {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  max-width: 800px;
-  margin: 40px auto 0;
-}
-
-.step {
-  display: flex;
-  gap: 25px;
-  align-items: flex-start;
-}
-
-.step-number {
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  font-weight: 700;
-  flex-shrink: 0;
-}
-
-.step-content h3 {
-  font-size: 1.5rem;
-  color: #1f2937;
-  margin-bottom: 10px;
-}
-
-.step-content p {
-  color: #6b7280;
-  line-height: 1.6;
-  margin: 0;
-}
-
-.tech-stack {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
-  margin-top: 40px;
-}
-
-.tech-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  padding: 20px;
-  background: #f9fafb;
-  border-radius: 12px;
-  min-width: 120px;
-  transition: transform 0.3s;
-}
-
-.tech-item:hover {
-  transform: scale(1.05);
-}
-
-.tech-icon {
-  font-size: 3rem;
-}
-
-.tech-name {
-  font-weight: 600;
-  color: #1f2937;
-}
-
-.contact-links {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 30px;
-  flex-wrap: wrap;
-}
-
-.contact-link {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 15px 30px;
-  background: #f9fafb;
-  border-radius: 8px;
-  text-decoration: none;
-  color: #1f2937;
-  font-weight: 600;
-  transition: all 0.3s;
-}
-
-.contact-link:hover {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-}
-
-.link-icon {
-  font-size: 1.5rem;
-}
-
-.cta-section {
-  background: #f9fafb;
-  padding: 80px 0;
-}
-
-.cta-content {
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.cta-content h2 {
-  font-size: 2.5rem;
-  color: #1f2937;
-  margin-bottom: 15px;
-}
-
-.cta-content p {
-  font-size: 1.25rem;
-  color: #6b7280;
-  margin-bottom: 30px;
-}
-
-.btn {
-  padding: 12px 30px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s;
-  display: inline-block;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
-}
-
-@media (max-width: 768px) {
-  .page-header h1 {
-    font-size: 2.5rem;
-  }
-
-  .about-section h2 {
-    font-size: 2rem;
-  }
-
-  .step {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .cta-content h2 {
-    font-size: 2rem;
-  }
-}
-</style>
+const techStack = [
+  { icon: '🦀', name: 'Rust' },
+  { icon: '⚡', name: 'Nuxt 4' },
+  { icon: '💚', name: 'Vue 3' },
+  { icon: '🎨', name: 'UnoCSS' },
+]
+</script>

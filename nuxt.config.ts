@@ -2,30 +2,31 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  
-  // Enable static site generation for better deployment compatibility
+
+  modules: ['@unocss/nuxt'],
+  css: ['@unocss/reset/tailwind-compat.css'],
+
   ssr: true,
-  
+
   app: {
     head: {
-      title: 'email2markdown - Convertissez vos emails en Markdown',
+      title: 'email2markdown — Vos emails, rangés et lisibles pour toujours',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Convertissez facilement vos emails HTML en format Markdown. Simple, rapide et sécurisé.' },
-        { name: 'keywords', content: 'email, markdown, conversion, html, text' }
+        { name: 'description', content: 'email2markdown se connecte à vos boîtes mail, sauvegarde chaque email en fichier texte, et range tout dans des dossiers. Simple, automatique, privé.' },
+        { name: 'keywords', content: 'email, markdown, imap, conversion, archivage, local' },
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-      ]
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      ],
     },
-    baseURL: '/'
+    baseURL: '/',
   },
-  
-  // Ensure proper route rules for deployment
+
   routeRules: {
     '/': { prerender: true },
     '/features': { prerender: true },
-    '/about': { prerender: true }
-  }
+    '/about': { prerender: true },
+  },
 })
